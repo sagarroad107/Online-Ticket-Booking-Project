@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupaRide | Book Your Journey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <a class="logo" href="index.html">Supa<span>Ride</span></a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#booking">Book Tickets</a>
+            <a href="#booking">My Journey</a>
+            <a href="admin.html" class="admin-link">Admin</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="eyebrow">WELCOME TO SUPARIDE</span>
+                <h1>Book your journey.<br><span>Travel with ease.</span></h1>
+                <p>
+                    Find your route, choose your preferred seat and book your
+                    ticket online in just a few simple steps.
+                </p>
+                <a href="#booking" class="primary-btn">
+                    Book Tickets <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div><span class="feature-icon">✦</span><strong>Comfortable Travel</strong><small>Comfortable passenger
+                    seating</small></div>
+            <div><span class="feature-icon">◷</span><strong>Easy Booking</strong><small>Book your seat online</small>
+            </div>
+            <div><span class="feature-icon">✓</span><strong>Seat Selection</strong><small>Choose your preferred
+                    seat</small></div>
+        </section>
+
+        <section class="vehicle-section" id="vehicle">
+            <div class="section-heading">
+                <span class="eyebrow">OUR VEHICLE</span>
+                <h2>Travel with <span>comfort.</span></h2>
+                <p>One vehicle. A comfortable journey.</p>
+            </div>
+            <div class="vehicle-card">
+                <img src="https://joylongeg.com/wp-content/uploads/2025/12/A4-front-angle-A-lighted-1024x681.jpg"
+                    alt="Joylong A4 Medium Roof">
+                <div class="vehicle-info">
+                    <span class="vehicle-tag">OUR FLEET</span>
+                    <h3>Joylong A4 – Medium Roof</h3>
+                    <p>A 15-passenger-seat minibus designed for comfortable travel.</p>
+                    <div class="spec-grid">
+                        <div><strong>15 + 1</strong><small>Seats</small></div>
+                        <div><strong>Manual</strong><small>Transmission</small></div>
+                        <div><strong>AC</strong><small>Air conditioning</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-section" id="booking">
+            <div class="section-heading">
+                <span class="eyebrow">ONLINE BOOKING</span>
+                <h2>Find your <span>journey.</span></h2>
+                <p>Select your route and travel date to find available journeys.</p>
+            </div>
+
+            <form class="search-panel" id="searchForm">
+                <div class="field">
+                    <label for="fromInput">FROM</label>
+                    <select id="fromInput" required>
+                        <option value="">Select departure</option>
+                        <option value="Mahendranagar">Mahendranagar</option>
+                        <option value="Baitadi">Baitadi</option>
+                        <option value="Gothalapani">Gothalapani</option>
+                        <option value="Patan">Patan</option>
+                        <option value="Dadeldhura">Dadeldhura</option>
+                        <option value="Attariya">Attariya</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="toInput">TO</label>
+                    <select id="toInput" required>
+                        <option value="">Select destination</option>
+                        <option value="Mahendranagar">Mahendranagar</option>
+                        <option value="Baitadi">Baitadi</option>
+                        <option value="Gothalapani">Gothalapani</option>
+                        <option value="Patan">Patan</option>
+                        <option value="Dadeldhura">Dadeldhura</option>
+                        <option value="Attariya">Attariya</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="travelDate">JOURNEY DATE</label>
+                    <input type="date" id="travelDate" required>
+                </div>
+
+                <button type="submit" class="search-btn">Select Seat →</button>
+            </form>
+
+            <div id="searchMessage" class="message" aria-live="polite"></div>
+            <div id="tripResults" class="trip-results"></div>
+        </section>
+
+
+        <section id="seatSection" class="booking-section seat-section hidden">
+
+            <div class="seat-booking-header">
+                <h2>Select Your Seats</h2>
+                <p>Choose your preferred seats from the layout below.</p>
+            </div>
+
+            <div id="selectedTripInfo" class="selected-trip-info"></div>
+
+            <div class="seat-booking-layout">
+
+                <!-- LEFT SIDE: BUS SEAT MAP -->
+                <div class="bus-seat-container">
+
+                    <div class="bus-driver">
+                        <span>🚘 Driver</span>
+                        <span class="steering">◉</span>
+                    </div>
+
+                    <div class="bus-seat-label">FRONT OF BUS</div>
+
+                    <div id="seatMap" class="seat-map bus-layout"></div>
+
+                    <div class="seat-legend">
+                        <div><span class="legend-seat available-legend"></span> Available</div>
+                        <div><span class="legend-seat selected-legend"></span> Selected</div>
+                        <div><span class="legend-seat booked-legend"></span> Booked</div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE: BOOKING SUMMARY -->
+                <div class="seat-summary">
+
+                    <h3>Booking Summary</h3>
+
+                    <div class="summary-item">
+                        <span>Selected Seats</span>
+                        <strong id="selectedSeatsText">None</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Passengers</span>
+                        <strong id="passengerCount">0</strong>
+                    </div>
+
+                    <div class="summary-item total-summary">
+                        <span>Total Fare</span>
+                        <strong id="totalFare">NPR 0</strong>
+                    </div>
+
+
+
+                    <div class="passenger-details">
+                        <h4>Passenger Details</h4>
+
+                        <form id="passengerForm">
+
+                            <label for="passengerFirstName">First Name</label>
+                            <input type="text" id="passengerFirstName" placeholder="Enter first name" required>
+
+                            <label for="passengerLastName">Last Name</label>
+                            <input type="text" id="passengerLastName" placeholder="Enter last name" required>
+
+                            <label for="passengerPhone">Mobile Number</label>
+
+                            <div class="phone-input">
+                                <span class="country-code">+977</span>
+
+                                <input type="tel" id="passengerPhone" placeholder="98XXXXXXXX" maxlength="10"
+                                    minlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+                            </div>
+
+                            <small class="phone-hint">
+                                Enter your 10-digit Nepal mobile number.
+                            </small>
+
+                            <button type="submit" class="primary-btn booking-confirm-btn">
+                                Confirm Booking →
+                            </button>
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="confirmation" class="confirmation hidden" aria-live="polite"></section>
+    </main>
+
+    <footer>
+        <a class="logo" href="#home">Supa<span>Ride</span></a>
+        <p>Comfortable journeys start here.</p>
+        <small>© <span id="year"></span> SupaRide Demo. All rights reserved.</small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

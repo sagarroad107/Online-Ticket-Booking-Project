@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SupaRide | Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+  <header class="admin-header">
+    <a class="logo" href="index.html">Supa<span>Ride</span></a>
+    <a href="index.html">← Customer Website</a>
+  </header>
+
+  <main class="admin-container">
+    <div class="admin-title">
+      <h1>Admin Dashboard</h1>
+      <p>Manage your Joylong A4 journeys, fares and customer bookings.</p>
+    </div>
+
+    <section class="admin-stats">
+      <div class="stat-card">
+        <small>Total Journeys</small>
+        <strong id="totalTrips">0</strong>
+      </div>
+      <div class="stat-card">
+        <small>Total Bookings</small>
+        <strong id="totalBookings">0</strong>
+      </div>
+      <div class="stat-card">
+        <small>Seats Booked</small>
+        <strong id="totalSeats">0</strong>
+      </div>
+    </section>
+
+    <section class="admin-grid">
+      <div class="admin-panel">
+        <h2>Add New Journey</h2>
+        <form id="tripForm" class="admin-form">
+
+          <div class="field">
+            <label for="adminFrom">FROM</label>
+            <select id="adminFrom" required>
+              <option value="">Select pickup location</option>
+              <option>Mahendranagar</option>
+              <option>Baitadi</option>
+              <option>Gothalapani</option>
+              <option>Patan</option>
+              <option>Dadeldhura</option>
+              <option>Attariya</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="adminTo">TO</label>
+            <select id="adminTo" required>
+              <option value="">Select destination</option>
+              <option>Mahendranagar</option>
+              <option>Baitadi</option>
+              <option>Gothalapani</option>
+              <option>Patan</option>
+              <option>Dadeldhura</option>
+              <option>Attariya</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="adminDate">TRAVEL DATE</label>
+            <input type="date" id="adminDate" required>
+          </div>
+
+          <div class="field">
+            <label for="adminDeparture">DEPARTURE TIME</label>
+            <input type="time" id="adminDeparture" required>
+          </div>
+
+          <div class="field">
+            <label for="adminFare">TICKET FARE (रु PER SEAT)</label>
+            <input type="number" id="adminFare" min="1" step="1" placeholder="Enter ticket fare" required>
+          </div>
+
+          <button type="submit" class="primary-btn">+ Add Journey</button>
+          <p id="adminMessage" class="admin-message" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Manage Journeys</h2>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ROUTE</th>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>FARE</th>
+                <th>SEATS LEFT</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="tripTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-panel booking-panel">
+      <h2>Customer Bookings</h2>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>BOOKING ID</th>
+              <th>PASSENGER</th>
+              <th>PHONE</th>
+              <th>ROUTE</th>
+              <th>DATE</th>
+              <th>SEATS</th>
+              <th>TOTAL</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="bookingTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
